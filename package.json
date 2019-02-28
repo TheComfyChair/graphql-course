@@ -1,0 +1,28 @@
+{
+  "name": "graphql-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "yarn install && nodemon ./src/index.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheComfyChair/graphql-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheComfyChair/graphql-course/issues"
+  },
+  "homepage": "https://github.com/TheComfyChair/graphql-course#readme",
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.1.1",
+    "lodash": "^4.17.11",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

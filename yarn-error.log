@@ -1,0 +1,54 @@
+Arguments: 
+  /home/kai/.nvm/versions/node/v10.9.0/bin/node /usr/bin/yarn add apollo-servergraphql
+
+PATH: 
+  /home/kai/.nvm/versions/node/v10.9.0/bin:/home/kai/.bin:/home/kai/.rbenv/plugins/ruby-build/bin:/home/kai/.rbenv/shims:/home/kai/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  10.9.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/apollo-servergraphql: Not found
+      at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:65894:18)
+      at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:129018:22)
+      at Request.emit (events.js:182:13)
+      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:129990:10)
+      at Request.emit (events.js:182:13)
+      at IncomingMessage.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:129912:12)
+      at Object.onceWrapper (events.js:273:13)
+      at IncomingMessage.emit (events.js:187:15)
+      at endReadableNT (_stream_readable.js:1085:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "graphql-course",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/TheComfyChair/graphql-course.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/TheComfyChair/graphql-course/issues"
+    },
+    "homepage": "https://github.com/TheComfyChair/graphql-course#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
