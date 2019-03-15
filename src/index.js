@@ -80,29 +80,52 @@ let orders = [
 
 /* Exercise: 
 
+  This first part is all about updating our query types to let us to retrieve our new, more detailed, data!
+
    1) Create an enum called ToppingRating which has three options: nope, meh, and good
 
-   2) Create a Topping type which has three fields: name (string), veggie (boolean), and rating (ToppingRating)
+   2) Create a Topping type which has three fields: name (mandatory string), veggie (mandatory boolean), and rating (optional ToppingRating)
 
-   3) Update the Pizza type so that it no longer has a veggie field, and instead has a toppings field which
-      accepts an array of Topping types.
-      
+   3) Update the Pizza type so that it no longer has a veggie field, and instead has a oppings field which
+      accepts a mandatory array of Topping types.
+
    4) With our updated types, create a query (in the playground @ http://localhost:4000/client) which selects the
       toppings for the pizzas in an order.
+
+   This second part is all about updating the input types so we can save that new data!
+
+   5) Create a ToppingInput input type with the same fields as the Topping type
+   
+   6) Update the PizzaInput input type to include the toppings field, which is an array of ToppingInput fields
+
+   7) Now create a mutation which creates a new order. In this mutation, pass along toppings! These can be anything you want,
+      as long as it matches the schema.
 
 */
 
 const typeDefs = gql`
+  enum ToppingRating {
+    nope
+    meh
+    good
+  }
+
   enum PizzaSizes {
     small
     medium
     large
   }
 
+  type Topping {
+    name: String!
+    veggie: Boolean!
+    rating: ToppingRating
+  }
+
   type Pizza {
     uuid: String!
-    veggie: Boolean!
     size: PizzaSizes!
+    toppings: [Topping!]!
   }
 
   type Order {
@@ -111,10 +134,16 @@ const typeDefs = gql`
     pizzas: [Pizza]!
   }
 
+  input ToppingInput {
+    name: String!
+    veggie: Boolean!
+    rating: ToppingRating
+  }
+
   input PizzaInput {
     uuid: ID
-    veggie: Boolean!
     size: PizzaSizes!
+    toppings: [ToppingInput!]!
   }
 
   input OrderInput {
