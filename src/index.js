@@ -6,6 +6,24 @@ const uuid = require("uuid/v4");
 // the GraphQL server for.  A more complete example might fetch
 // from an existing data source like a REST API or database.
 
+const toppings = {
+  pepperoni: {
+    name: "Pepperoni",
+    veggie: false,
+    rating: "good"
+  },
+  pineapple: {
+    name: "Pineapple",
+    veggie: true,
+    rating: "nope"
+  },
+  mushroom: {
+    name: "Mushroom",
+    veggie: true,
+    rating: "meh"
+  }
+};
+
 let orders = [
   {
     name: "Destroyer of Pizzas",
@@ -14,22 +32,22 @@ let orders = [
       {
         uuid: uuid(),
         size: "large",
-        veggie: false
+        toppings: [toppings.pepperoni, toppings.mushroom]
       },
       {
         uuid: uuid(),
         size: "large",
-        veggie: false
+        toppings: [toppings.pepperoni]
       },
       {
         uuid: uuid(),
         size: "large",
-        veggie: false
+        toppings: [toppings.pineapple]
       },
       {
         uuid: uuid(),
         size: "large",
-        veggie: true
+        toppings: [toppings.pepperoni]
       }
     ]
   },
@@ -40,7 +58,7 @@ let orders = [
       {
         uuid: uuid(),
         size: "medium",
-        veggie: false
+        toppings: [toppings.pepperoni]
       }
     ]
   },
@@ -51,7 +69,7 @@ let orders = [
       {
         uuid: uuid(),
         size: "small",
-        veggie: true
+        toppings: [toppings.pepperoni]
       }
     ]
   }
@@ -59,6 +77,32 @@ let orders = [
 
 // Type definitions define the "shape" of your data and specify
 // which ways the data can be fetched from the GraphQL server.
+
+/* Exercise: 
+
+  This first part is all about updating our query types to let us to retrieve our new, more detailed, data!
+
+   1) Create an enum called ToppingRating which has three options: nope, meh, and good
+
+   2) Create a Topping type which has three fields: name (mandatory string), veggie (mandatory boolean), and rating (optional ToppingRating)
+
+   3) Update the Pizza type so that it no longer has a veggie field, and instead has a oppings field which
+      accepts a mandatory array of Topping types.
+
+   4) With our updated types, create a query (in the playground @ http://localhost:4000/client) which selects the
+      toppings for the pizzas in an order.
+
+   This second part is all about updating the input types so we can save that new data!
+
+   5) Create a ToppingInput input type with the same fields as the Topping type
+   
+   6) Update the PizzaInput input type to include the toppings field, which is an array of ToppingInput fields
+
+   7) Now create a mutation which creates a new order. In this mutation, pass along toppings! These can be anything you want,
+      as long as it matches the schema.
+
+*/
+
 const typeDefs = gql`
   enum PizzaSizes {
     small
