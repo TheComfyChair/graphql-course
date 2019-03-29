@@ -40,10 +40,11 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    order: (_, args) =>
-      find(({ uuid }) => uuid === get(["input", "uuid"])(args))(
+    order: (_, args) => {
+      return find(({ uuid }) => uuid === get(["input", "uuid"])(args))(
         data.getOrders()
-      ),
+      );
+    },
     allOrders: () => data.getOrders()
   },
   Mutation: {
@@ -75,6 +76,13 @@ const resolvers = {
           data.getPizzas()
         )
       };
+    }
+  },
+  Order: {
+    pizzas: root => {
+      return filter(pizza => includes(pizza.uuid)(root.pizzas))(
+        data.getPizzas()
+      );
     }
   }
 };

@@ -73,6 +73,7 @@ const resolvers = {
      the Pizza type */
   Mutation: {},
   Pizza: {
+    size: root => "large",
     toppings: ({ toppings }) => {
       return filter(topping => includes(topping.uuid)(toppings))(
         data.getToppings()
